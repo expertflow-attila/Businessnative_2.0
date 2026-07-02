@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
-import Console from "@/components/Console";
+import HeroShowcase from "@/components/HeroShowcase";
 import { PlusMark } from "@/components/PageFrame";
 import { EASE, Magnetic } from "@/components/motion/primitives";
 
@@ -107,7 +107,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1.0, ease: EASE, delay: 0.35 }}
         >
-          <Console />
+          <HeroShowcase />
         </motion.div>
       </div>
     </section>
