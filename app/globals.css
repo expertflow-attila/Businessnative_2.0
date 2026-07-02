@@ -1,0 +1,259 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* == Chronicle token system — Business Native 2.0 ==================== */
+
+  /* Colors (light reference values — runtime themed via --bn-* below) */
+  --color-fog-canvas: #f3f3f3;
+  --color-near-black: #050505;
+  --color-pale-stone: #e1e1e1;
+  --color-pure-white: #ffffff;
+  --color-slate-note: #666666;
+  --color-signal-blue: #0052cc;
+  --color-graphite-mid: #3a3a3a;
+  --color-midnight-ink: #000000;
+  --color-hairline-grey: #e2e2e2;
+
+  /* Themed surface aliases — consumed as bg-canvas, text-ink, etc. */
+  --color-canvas: var(--bn-canvas);
+  --color-lifted: var(--bn-lifted);
+  --color-inset: var(--bn-inset);
+  --color-ink: var(--bn-ink);
+  --color-ink-2: var(--bn-ink-2);
+  --color-ink-3: var(--bn-ink-3);
+  --color-hairline: var(--bn-hairline);
+  --color-accent: var(--bn-accent);
+  --color-cta: var(--bn-cta);
+  --color-cta-ink: var(--bn-cta-ink);
+
+  /* Typography */
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --text-caption: 11px;
+  --text-caption--line-height: 1.4;
+  --text-caption--letter-spacing: -0.01em;
+  --text-body-sm: 12px;
+  --text-body-sm--line-height: 1.4;
+  --text-body-sm--letter-spacing: -0.02em;
+  --text-body: 14px;
+  --text-body--line-height: 1.5;
+  --text-body--letter-spacing: -0.02em;
+  --text-body-lg: 16px;
+  --text-body-lg--line-height: 1.5;
+  --text-body-lg--letter-spacing: -0.02em;
+  --text-heading-sm: 18px;
+  --text-heading-sm--line-height: 1.2;
+  --text-heading-sm--letter-spacing: -0.03em;
+  --text-heading: 24px;
+  --text-heading--line-height: 1.2;
+  --text-heading--letter-spacing: -0.03em;
+  --text-heading-lg: 32px;
+  --text-heading-lg--line-height: 1.1;
+  --text-heading-lg--letter-spacing: -0.03em;
+  --text-display-sm: 40px;
+  --text-display-sm--line-height: 1.1;
+  --text-display-sm--letter-spacing: -0.04em;
+  --text-display: 56px;
+  --text-display--line-height: 1.05;
+  --text-display--letter-spacing: -0.04em;
+
+  /* Radius */
+  --radius-base: 4px;
+  --radius-small: 2px;
+  --radius-medium: 6px;
+  --radius-large: 8px;
+  --radius-submenu: 12px;
+
+  /* Shadows */
+  --shadow-card-lift: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-deep-card: 0 3px 32px rgba(5, 5, 5, 0.2);
+  --shadow-hero-slider: 0 2px 24px rgba(5, 5, 5, 0.08);
+
+  /* Motion */
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1025px;
+  --breakpoint-xl: 1280px;
+}
+
+/* == Theme surfaces =====================================================
+   Light: Chronicle marketing canvas (pure white / fog / pale stone)
+   Dark:  Chronicle app chrome (near-black / graphite lift)             */
+:root {
+  --bn-canvas: #ffffff;
+  --bn-lifted: #f3f3f3;
+  --bn-inset: #e1e1e1;
+  --bn-ink: #000000;
+  --bn-ink-2: #3a3a3a;
+  --bn-ink-3: #666666;
+  --bn-hairline: #e2e2e2;
+  --bn-accent: #0052cc;
+  --bn-cta: #000000;
+  --bn-cta-ink: #ffffff;
+  color-scheme: light;
+}
+
+.dark {
+  --bn-canvas: #0a0a0a;
+  --bn-lifted: #141414;
+  --bn-inset: #1d1d1f;
+  --bn-ink: #f5f5f5;
+  --bn-ink-2: #c9c9c9;
+  --bn-ink-3: #8a8a8a;
+  --bn-hairline: #242426;
+  --bn-accent: #4d8dff;
+  --bn-cta: #f5f5f5;
+  --bn-cta-ink: #0a0a0a;
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--bn-canvas);
+    color: var(--bn-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transition: background-color 300ms ease-out, color 300ms ease-out;
+  }
+
+  ::selection {
+    background: var(--bn-ink);
+    color: var(--bn-canvas);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--bn-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  .container-page {
+    margin-inline: auto;
+    max-width: 1280px;
+    padding-inline: clamp(20px, 4vw, 40px);
+  }
+
+  /* Primary CTA — Chronicle: sharp 4px, 36/44px height, weight 500 */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 44px;
+    padding-inline: 20px;
+    border-radius: var(--radius-base);
+    background: var(--bn-cta);
+    color: var(--bn-cta-ink);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    transition: opacity 200ms linear, transform 400ms var(--ease-premium);
+  }
+  .btn-primary:hover {
+    opacity: 0.85;
+  }
+  .btn-primary.btn-sm {
+    height: 36px;
+    padding-inline: 16px;
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 44px;
+    padding-inline: 20px;
+    border-radius: var(--radius-base);
+    border: 1px solid var(--bn-hairline);
+    background: transparent;
+    color: var(--bn-ink);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    transition: border-color 200ms linear, background-color 200ms linear;
+  }
+  .btn-ghost:hover {
+    border-color: var(--bn-ink-3);
+  }
+
+  /* Eyebrow — mono utility label */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--bn-ink-3);
+  }
+
+  .hairline-b {
+    border-bottom: 1px solid var(--bn-hairline);
+  }
+  .hairline-t {
+    border-top: 1px solid var(--bn-hairline);
+  }
+}
+
+/* Marquee ------------------------------------------------------------- */
+@keyframes bn-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: bn-marquee 36s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Console pulse dot ---------------------------------------------------- */
+@keyframes bn-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+.pulse-dot {
+  animation: bn-pulse 2.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .marquee-track,
+  .pulse-dot {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

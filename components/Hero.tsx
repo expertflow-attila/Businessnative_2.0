@@ -1,0 +1,105 @@
+"use client";
+
+import { motion, useReducedMotion } from "motion/react";
+import Console from "@/components/Console";
+import { EASE, Magnetic } from "@/components/motion/primitives";
+
+const H1_LINES = ["Amikor a", "teljesítmény", "magától jön."];
+
+export default function Hero() {
+  const reduce = useReducedMotion();
+
+  return (
+    <section className="hairline-b">
+      <div className="container-page grid items-center gap-12 py-16 md:py-20 lg:grid-cols-[42fr_58fr] lg:gap-16 lg:py-24">
+        {/* Bal: tézis */}
+        <div>
+          <motion.p
+            initial={reduce ? false : { opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: EASE, delay: 0.1 }}
+            className="eyebrow"
+          >
+            MI-ügynökök · valós folyamatokra
+          </motion.p>
+
+          <h1 className="mt-5 text-[clamp(38px,4.8vw,64px)] font-bold leading-[1.02] tracking-[-0.04em] text-ink">
+            {H1_LINES.map((line, i) => (
+              <span key={line} className="block overflow-hidden">
+                <motion.span
+                  className="block"
+                  initial={reduce ? false : { y: "110%" }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.9, ease: EASE, delay: 0.15 + i * 0.12 }}
+                >
+                  {line}
+                </motion.span>
+              </span>
+            ))}
+          </h1>
+
+          <motion.p
+            initial={reduce ? false : { opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: EASE, delay: 0.45 }}
+            className="mt-6 max-w-[46ch] text-body-lg text-ink-3"
+          >
+            Olyan rendszereket építek, ahol MI-ügynökök végzik az ismétlődő
+            munkát — kevesebb kézi lépés, gyorsabb átfutás, és több időd arra,
+            ami igazán számít.
+          </motion.p>
+
+          <motion.div
+            initial={reduce ? false : { opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: EASE, delay: 0.58 }}
+            className="mt-8 flex flex-wrap items-center gap-3"
+          >
+            <Magnetic>
+              <a href="#kapcsolat" className="btn-primary">
+                Konzultációt foglalok
+              </a>
+            </Magnetic>
+            <a href="#folyamat" className="btn-ghost group">
+              Így dolgozom
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 13 13"
+                fill="none"
+                aria-hidden
+                className="transition-transform duration-300 ease-out group-hover:translate-x-1"
+              >
+                <path
+                  d="M2 6.5h9M7.5 3l3.5 3.5L7.5 10"
+                  stroke="currentColor"
+                  strokeWidth="1.3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
+          </motion.div>
+
+          <motion.p
+            initial={reduce ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, ease: EASE, delay: 0.75 }}
+            className="mt-6 text-body-sm text-ink-3"
+          >
+            Első beszélgetés díjmentes · konkrét folyamat-tervvel távozol
+          </motion.p>
+        </div>
+
+        {/* Jobb: élő műveleti konzol */}
+        <motion.div
+          initial={reduce ? false : { opacity: 0, y: 32, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1.0, ease: EASE, delay: 0.35 }}
+        >
+          <Console />
+        </motion.div>
+      </div>
+    </section>
+  );
+}
