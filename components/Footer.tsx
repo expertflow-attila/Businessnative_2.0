@@ -15,8 +15,9 @@ export default function Footer() {
         <nav className="flex flex-col gap-2 text-body-sm" aria-label="Lábléc navigáció">
           {[
             ["Szolgáltatás", "/szolgaltatas"],
+            ["Munkáim", "/munkaim"],
+            ["Tudástár", "/tudastar"],
             ["Rólam", "/rolam"],
-            ["Referenciák", "/referenciak"],
           ].map(([label, href]) => (
             <a key={href} href={href} className="text-ink-3 transition-colors duration-200 hover:text-ink">
               {label}

@@ -47,11 +47,13 @@ function ThemeToggle() {
 
 const LINKS = [
   { href: "/szolgaltatas", label: "Szolgáltatás" },
+  { href: "/munkaim", label: "Munkáim" },
+  { href: "/tudastar", label: "Tudástár" },
   { href: "/rolam", label: "Rólam" },
-  { href: "/referenciak", label: "Referenciák" },
 ];
 
 const TRAINING_URL = "https://expertflow-website-v4.vercel.app/kerdoiv";
+const BUSINESS_START_URL = "https://expert-flow-start-6-0.vercel.app/";
 
 export default function Nav() {
   const reduce = useReducedMotion();
@@ -84,13 +86,22 @@ export default function Nav() {
 
         <div className="flex items-center gap-3">
           <a
+            href={BUSINESS_START_URL}
+            target="_blank"
+            rel="noopener"
+            className="hidden text-body font-medium text-ink/45 transition-colors duration-200 hover:text-ink lg:block"
+          >
+            Business Start
+          </a>
+          <a
             href={TRAINING_URL}
             target="_blank"
             rel="noopener"
-            className="hidden text-body font-medium text-ink/45 transition-colors duration-200 hover:text-ink md:block"
+            className="hidden text-body font-medium text-ink/45 transition-colors duration-200 hover:text-ink lg:block"
           >
             Tréningek
           </a>
+          <span className="hidden h-4 w-px bg-hairline lg:block" aria-hidden />
           <ThemeToggle />
           <a href="#kapcsolat" className="btn-primary btn-sm hidden sm:inline-flex">
             Beszéljünk
@@ -132,6 +143,16 @@ export default function Nav() {
                 {l.label}
               </a>
             ))}
+            <span className="my-2 h-px bg-hairline" aria-hidden />
+            <a
+              href={BUSINESS_START_URL}
+              target="_blank"
+              rel="noopener"
+              onClick={() => setOpen(false)}
+              className="rounded-base px-2 py-2.5 text-body-lg font-medium text-ink/70 hover:bg-inset/40 hover:text-ink"
+            >
+              Business Start
+            </a>
             <a
               href={TRAINING_URL}
               target="_blank"

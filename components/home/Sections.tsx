@@ -1,7 +1,66 @@
 import Image from "next/image";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/primitives";
+import { PROJECTS } from "@/lib/projects";
 
 /* Főoldal tartalmi szekciói — a Webflow-oldal szövegei első személyben. */
+
+export function WorkTeaser() {
+  const featured = PROJECTS.slice(0, 3);
+  return (
+    <section className="hairline-b">
+      <div className="container-page py-20 md:py-24">
+        <Reveal>
+          <div className="flex flex-wrap items-end justify-between gap-x-12 gap-y-4">
+            <div>
+              <p className="eyebrow">Munkáim</p>
+              <h2 className="mt-4 max-w-[24ch] text-[clamp(30px,4vw,44px)] font-normal leading-[1.08] tracking-[-0.04em] text-ink">
+                Amit eddig építettem — nézd meg élőben.
+              </h2>
+            </div>
+            <a href="/munkaim" className="btn-ghost group pb-1">
+              Összes munkám
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 13 13"
+                fill="none"
+                aria-hidden
+                className="transition-transform duration-300 ease-out group-hover:translate-x-1"
+              >
+                <path d="M2 6.5h9M7.5 3l3.5 3.5L7.5 10" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
+          </div>
+        </Reveal>
+
+        <Stagger className="mt-10 grid gap-px overflow-hidden rounded-large border border-hairline bg-hairline sm:grid-cols-2 lg:grid-cols-3">
+          {featured.map((p) => (
+            <StaggerItem key={p.slug} className="bg-surface">
+              <a href={`/munkaim/${p.slug}`} className="group flex h-full flex-col">
+                <div className="relative aspect-[16/10] overflow-hidden border-b border-hairline bg-inset">
+                  <Image
+                    src={p.cover}
+                    alt={p.title}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-6">
+                  <span className="font-mono text-[9px] font-medium tracking-[0.08em] text-accent">
+                    {p.category.toUpperCase()}
+                  </span>
+                  <h3 className="mt-2.5 text-heading-sm font-medium text-ink">{p.title}</h3>
+                  <p className="mt-2 text-body text-ink-3">{p.tagline}</p>
+                </div>
+              </a>
+            </StaggerItem>
+          ))}
+        </Stagger>
+      </div>
+    </section>
+  );
+}
 
 export function Statement() {
   return (

@@ -3,6 +3,7 @@ import ToolsBand from "@/components/ToolsBand";
 import {
   Statement,
   Challenges,
+  WorkTeaser,
   AboutTeaser,
   Difference,
   Pillars,
@@ -18,6 +19,7 @@ export default function Home() {
       <ToolsBand />
       <Statement />
       <Challenges />
+      <WorkTeaser />
       <Compare />
       <AboutTeaser />
       <Difference />
