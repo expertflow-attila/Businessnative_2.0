@@ -1,3 +1,5 @@
+import { Stagger, StaggerItem } from "@/components/motion/primitives";
+
 const TOOLS = [
   "Claude",
   "OpenAI",
@@ -11,25 +13,29 @@ const TOOLS = [
   "ElevenLabs",
 ];
 
-/* Őszinte trust-band: nem ügyfél-logók, hanem az eszközök, amikre építek. */
+/* Cellás logófal (Chronicle-minta): 1px hairline-nal osztott rács.
+   Őszinte trust-band — az eszközök, amikre építek, nem kamu ügyfél-logók. */
 export default function ToolsBand() {
-  const row = [...TOOLS, ...TOOLS];
   return (
     <section className="hairline-b" aria-label="Eszközök, amikre építek">
-      <div className="container-page py-6">
+      <div className="container-page py-10 md:py-12">
         <p className="eyebrow text-center">Ezekre az eszközökre építem a rendszereket</p>
-      </div>
-      <div className="marquee overflow-hidden pb-8" aria-hidden>
-        <div className="marquee-track items-center gap-14 pr-14">
-          {row.map((t, i) => (
-            <span
-              key={`${t}-${i}`}
-              className="whitespace-nowrap text-heading-sm font-medium tracking-[-0.02em] text-ink/30"
+        <Stagger
+          className="mt-6 grid grid-cols-2 overflow-hidden rounded-large border border-hairline bg-hairline gap-px sm:grid-cols-5"
+          stagger={0.05}
+        >
+          {TOOLS.map((t) => (
+            <StaggerItem
+              key={t}
+              y={12}
+              className="flex h-[72px] items-center justify-center bg-canvas px-3"
             >
-              {t}
-            </span>
+              <span className="whitespace-nowrap text-center text-[15px] font-medium tracking-[-0.02em] text-ink/45 transition-colors duration-200 hover:text-ink">
+                {t}
+              </span>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </div>
     </section>
   );

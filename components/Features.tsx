@@ -48,14 +48,18 @@ export default function Features() {
     <section id="rendszer" className="hairline-b">
       <div className="container-page py-20 md:py-24">
         <Reveal>
-          <p className="eyebrow">A rendszer</p>
-          <h2 className="mt-4 max-w-[24ch] text-[clamp(30px,4vw,44px)] font-normal leading-[1.08] tracking-[-0.04em] text-ink">
-            Komoly munkára építve.
-          </h2>
-          <p className="mt-4 max-w-[52ch] text-body-lg text-ink-3">
-            Nem körítésnek szánt MI, hanem működő háttérrendszer: a feladat
-            ténylegesen elkészül, és minden lépése visszakereshető.
-          </p>
+          <div className="flex flex-wrap items-end justify-between gap-x-12 gap-y-4">
+            <div>
+              <p className="eyebrow">A rendszer</p>
+              <h2 className="mt-4 max-w-[24ch] text-[clamp(30px,4vw,44px)] font-normal leading-[1.08] tracking-[-0.04em] text-ink">
+                Komoly munkára építve.
+              </h2>
+            </div>
+            <p className="max-w-[40ch] pb-1 text-body text-ink-3">
+              Nem körítésnek szánt MI, hanem működő háttérrendszer: a feladat
+              ténylegesen elkészül, és minden lépése visszakereshető.
+            </p>
+          </div>
         </Reveal>
 
         <Stagger className="mt-12 grid gap-px overflow-hidden rounded-large border border-hairline bg-hairline md:grid-cols-2">
