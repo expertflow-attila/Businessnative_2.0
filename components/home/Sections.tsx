@@ -160,7 +160,7 @@ export function AboutTeaser() {
         <Reveal>
           <div className="relative aspect-[4/5] overflow-hidden rounded-large border border-hairline bg-inset">
             <Image
-              src="/images/attila-portre.jpg"
+              src="/images/attila-portrait-light.png"
               alt="Nagy Attila"
               fill
               sizes="(max-width: 1024px) 100vw, 38vw"

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
 import { motion, useReducedMotion } from "motion/react";
 import { EASE } from "@/components/motion/primitives";
@@ -20,7 +20,6 @@ function ThemeToggle() {
       {!mounted ? (
         <span className="block h-4 w-4" />
       ) : resolvedTheme === "dark" ? (
-        /* nap */
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden>
           <circle cx="7.5" cy="7.5" r="3.25" stroke="currentColor" strokeWidth="1.2" />
           <path
@@ -31,7 +30,6 @@ function ThemeToggle() {
           />
         </svg>
       ) : (
-        /* hold */
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden>
           <path
             d="M13 9.5A6 6 0 0 1 5.5 2 6 6 0 1 0 13 9.5Z"
@@ -48,16 +46,87 @@ function ThemeToggle() {
 const LINKS = [
   { href: "/szolgaltatas", label: "Szolgáltatás" },
   { href: "/munkaim", label: "Munkáim" },
-  { href: "/tudastar", label: "Tudástár" },
   { href: "/rolam", label: "Rólam" },
 ];
 
-const TRAINING_URL = "https://expertflow-website-v4.vercel.app/kerdoiv";
-const BUSINESS_START_URL = "https://expert-flow-start-6-0.vercel.app/";
+const TUDASTAR_ITEMS = [
+  { href: "https://copywriting-ef.vercel.app/", label: "Copywriting", external: true },
+  { href: "/tudastar", label: "Landoló oldal", external: false },
+  { href: "https://esettanulmanyok-ef.vercel.app/", label: "Esettanulmányok", external: true },
+  { href: "https://expert-flow-start-6-0.vercel.app/", label: "Business Start", external: true },
+  { href: "/eszkoztar", label: "AI Eszközök", external: false },
+];
+
+const CAL_URL = "https://cal.com/attila-nagy-8uefco/konzultacio";
+
+function TudasDropdown() {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        onMouseEnter={() => setOpen(true)}
+        onMouseLeave={() => setOpen(false)}
+        className="flex items-center gap-1 text-body font-medium text-ink/45 transition-colors duration-200 hover:text-ink"
+        aria-expanded={open}
+      >
+        Tudástár
+        <svg
+          width="11"
+          height="11"
+          viewBox="0 0 11 11"
+          fill="none"
+          aria-hidden
+          className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+        >
+          <path d="M2 4l3.5 3.5L9 4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+
+      {open && (
+        <div
+          onMouseEnter={() => setOpen(true)}
+          onMouseLeave={() => setOpen(false)}
+          className="absolute left-0 top-full z-50 mt-2 min-w-[168px] overflow-hidden rounded-large border border-hairline bg-canvas shadow-sm"
+        >
+          {TUDASTAR_ITEMS.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              target={item.external ? "_blank" : undefined}
+              rel={item.external ? "noopener" : undefined}
+              onClick={() => setOpen(false)}
+              className="flex items-center justify-between px-4 py-2.5 text-body text-ink/60 transition-colors duration-150 hover:bg-inset/50 hover:text-ink"
+            >
+              {item.label}
+              {item.external && (
+                <svg width="10" height="10" viewBox="0 0 13 13" fill="none" aria-hidden className="ml-2 shrink-0 opacity-40">
+                  <path d="M3.5 9.5l6-6M4.5 3.5h5v5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              )}
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function Nav() {
   const reduce = useReducedMotion();
   const [open, setOpen] = useState(false);
+  const [tudasOpen, setTudasOpen] = useState(false);
 
   return (
     <motion.header
@@ -69,7 +138,6 @@ export default function Nav() {
       <div className="container-page flex h-[54px] items-center justify-between">
         <a href="#" className="flex items-baseline gap-1.5 text-[15px] font-semibold tracking-[-0.02em] text-ink">
           business native
-          <span className="font-mono text-[10px] font-medium text-ink-3">2.0</span>
         </a>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Fő navigáció">
@@ -82,29 +150,18 @@ export default function Nav() {
               {l.label}
             </a>
           ))}
+          <TudasDropdown />
         </nav>
 
         <div className="flex items-center gap-3">
-          <a
-            href={BUSINESS_START_URL}
-            target="_blank"
-            rel="noopener"
-            className="hidden text-body font-medium text-ink/45 transition-colors duration-200 hover:text-ink lg:block"
-          >
-            Business Start
-          </a>
-          <a
-            href={TRAINING_URL}
-            target="_blank"
-            rel="noopener"
-            className="hidden text-body font-medium text-ink/45 transition-colors duration-200 hover:text-ink lg:block"
-          >
-            Tréningek
-          </a>
-          <span className="hidden h-4 w-px bg-hairline lg:block" aria-hidden />
           <ThemeToggle />
-          <a href="#kapcsolat" className="btn-primary btn-sm hidden sm:inline-flex">
-            Beszéljünk
+          <a
+            href={CAL_URL}
+            target="_blank"
+            rel="noopener"
+            className="btn-primary btn-sm hidden sm:inline-flex"
+          >
+            Konzultáció
           </a>
           <button
             type="button"
@@ -143,27 +200,50 @@ export default function Nav() {
                 {l.label}
               </a>
             ))}
-            <span className="my-2 h-px bg-hairline" aria-hidden />
+
+            {/* Tudástár expandable */}
+            <button
+              type="button"
+              onClick={() => setTudasOpen((v) => !v)}
+              className="flex items-center justify-between rounded-base px-2 py-2.5 text-body-lg font-medium text-ink/70 hover:bg-inset/40 hover:text-ink"
+            >
+              Tudástár
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 11 11"
+                fill="none"
+                aria-hidden
+                className={`transition-transform duration-200 ${tudasOpen ? "rotate-180" : ""}`}
+              >
+                <path d="M2 4l3.5 3.5L9 4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+            {tudasOpen && (
+              <div className="ml-2 flex flex-col gap-0.5 border-l border-hairline pl-3">
+                {TUDASTAR_ITEMS.map((item) => (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    target={item.external ? "_blank" : undefined}
+                    rel={item.external ? "noopener" : undefined}
+                    onClick={() => { setOpen(false); setTudasOpen(false); }}
+                    className="rounded-base px-2 py-2 text-body font-medium text-ink/60 hover:bg-inset/40 hover:text-ink"
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </div>
+            )}
+
             <a
-              href={BUSINESS_START_URL}
+              href={CAL_URL}
               target="_blank"
               rel="noopener"
               onClick={() => setOpen(false)}
-              className="rounded-base px-2 py-2.5 text-body-lg font-medium text-ink/70 hover:bg-inset/40 hover:text-ink"
+              className="btn-primary mt-3"
             >
-              Business Start
-            </a>
-            <a
-              href={TRAINING_URL}
-              target="_blank"
-              rel="noopener"
-              onClick={() => setOpen(false)}
-              className="rounded-base px-2 py-2.5 text-body-lg font-medium text-ink/70 hover:bg-inset/40 hover:text-ink"
-            >
-              Tréningek
-            </a>
-            <a href="#kapcsolat" onClick={() => setOpen(false)} className="btn-primary mt-3">
-              Beszéljünk
+              Konzultáció
             </a>
           </div>
         </motion.nav>

@@ -5,7 +5,6 @@ export default function Footer() {
         <div>
           <span className="flex items-baseline gap-1.5 text-[15px] font-semibold tracking-[-0.02em] text-ink">
             business native
-            <span className="font-mono text-[10px] font-medium text-ink-3">2.0</span>
           </span>
           <p className="mt-2 max-w-[42ch] text-body-sm text-ink-3">
             AI-alapú rendszereket építek egyéni vállalkozóknak — hogy a
@@ -25,8 +24,8 @@ export default function Footer() {
           ))}
         </nav>
         <div className="flex flex-col gap-2 text-body-sm text-ink-3 md:items-end">
-          <a href="mailto:hello@expertflow.hu" className="transition-colors duration-200 hover:text-ink">
-            hello@expertflow.hu
+          <a href="mailto:hello@businessnative.hu" className="transition-colors duration-200 hover:text-ink">
+            hello@businessnative.hu
           </a>
           <span>© {new Date().getFullYear()} Business Native · Nagy Attila</span>
         </div>
