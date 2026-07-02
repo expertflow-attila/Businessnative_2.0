@@ -25,6 +25,14 @@ const CLIENTS = [
     img: "/images/ref-eva.webp",
     href: "/referenciak/eva-nagyfejeo",
   },
+  {
+    tag: "Táplálkozási tanácsadó",
+    title: "Tápláló Életmód",
+    desc: "Meleg hangvételű weboldal egy táplálkozási tanácsadónak, az öt életmód-alappillér köré építve.",
+    img: "/images/projects/taplaloeletmod.jpg",
+    href: "https://www.taplaloeletmod.hu/",
+    external: true,
+  },
 ];
 
 export default function MunkaimPage() {
@@ -66,28 +74,39 @@ export default function MunkaimPage() {
             </div>
           </Reveal>
 
-          <Stagger className="mt-10 grid gap-px overflow-hidden rounded-large border border-hairline bg-hairline md:grid-cols-2">
+          <Stagger className="mt-10 grid gap-px overflow-hidden rounded-large border border-hairline bg-hairline md:grid-cols-3">
             {CLIENTS.map((c) => (
               <StaggerItem key={c.href} className="bg-surface">
-                <a href={c.href} className="group flex h-full flex-col">
+                <a
+                  href={c.href}
+                  target={c.external ? "_blank" : undefined}
+                  rel={c.external ? "noopener" : undefined}
+                  className="group flex h-full flex-col"
+                >
                   <div className="relative aspect-[16/10] overflow-hidden border-b border-hairline bg-inset">
                     <Image
                       src={c.img}
                       alt={c.title}
                       fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
+                      sizes="(max-width: 768px) 100vw, 33vw"
                       className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]"
                     />
                   </div>
-                  <div className="flex flex-1 flex-col p-6 sm:p-8">
+                  <div className="flex flex-1 flex-col p-6 sm:p-7">
                     <span className="font-mono text-[10px] font-medium tracking-[0.08em] text-accent">
                       {c.tag.toUpperCase()}
                     </span>
                     <h3 className="mt-3 text-heading font-normal tracking-[-0.02em] text-ink">{c.title}</h3>
-                    <p className="mt-2.5 text-body text-ink-3">{c.desc}</p>
+                    <p className="mt-2.5 flex-1 text-body text-ink-3">{c.desc}</p>
                     <span className="mt-5 inline-flex items-center gap-2 text-body font-medium text-ink">
-                      Esettanulmány
-                      <Arrow />
+                      {c.external ? "Megnézem élőben" : "Esettanulmány"}
+                      {c.external ? (
+                        <svg width="12" height="12" viewBox="0 0 13 13" fill="none" aria-hidden className="transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                          <path d="M3.5 9.5l6-6M4.5 3.5h5v5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      ) : (
+                        <Arrow />
+                      )}
                     </span>
                   </div>
                 </a>
