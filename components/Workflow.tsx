@@ -82,14 +82,14 @@ export default function Workflow() {
     <section
       id="folyamat"
       ref={sectionRef}
-      className="hairline-b bg-lifted"
+      className="hairline-b"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
       <div className="container-page py-20 md:py-24">
         <Reveal>
           <p className="eyebrow">Így dolgozom</p>
-          <h2 className="mt-4 max-w-[22ch] text-[clamp(30px,4vw,44px)] font-bold leading-[1.08] tracking-[-0.04em] text-ink">
+          <h2 className="mt-4 max-w-[22ch] text-[clamp(30px,4vw,44px)] font-normal leading-[1.08] tracking-[-0.04em] text-ink">
             Négy lépés a kézi munkától a működő rendszerig.
           </h2>
         </Reveal>
@@ -164,7 +164,7 @@ export default function Workflow() {
 
           {/* Preview panel — termék-ablak logika */}
           <div className="rounded-large border border-hairline bg-inset p-3 shadow-hero-slider sm:p-4">
-            <div className="relative min-h-[320px] overflow-hidden rounded-medium bg-canvas shadow-card-lift">
+            <div className="relative min-h-[320px] overflow-hidden rounded-medium bg-surface shadow-card-lift">
               <AnimatePresence mode="wait" initial={false}>
                 <motion.div
                   key={step.key}

@@ -6,7 +6,7 @@ export default function Cta() {
       <div className="container-page py-24 text-center md:py-32">
         <Reveal>
           <p className="eyebrow">Kezdjük el</p>
-          <h2 className="mx-auto mt-4 max-w-[18ch] text-[clamp(34px,5vw,56px)] font-bold leading-[1.05] tracking-[-0.04em] text-ink">
+          <h2 className="mx-auto mt-4 max-w-[18ch] text-[clamp(34px,5vw,56px)] font-normal leading-[1.05] tracking-[-0.04em] text-ink">
             Nézzük meg, mit végezne el helyetted a rendszer.
           </h2>
           <p className="mx-auto mt-5 max-w-[48ch] text-body-lg text-ink-3">

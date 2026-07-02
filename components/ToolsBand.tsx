@@ -15,7 +15,7 @@ const TOOLS = [
 export default function ToolsBand() {
   const row = [...TOOLS, ...TOOLS];
   return (
-    <section className="hairline-b bg-canvas" aria-label="Eszközök, amikre építek">
+    <section className="hairline-b" aria-label="Eszközök, amikre építek">
       <div className="container-page py-6">
         <p className="eyebrow text-center">Ezekre az eszközökre építem a rendszereket</p>
       </div>

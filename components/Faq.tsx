@@ -32,17 +32,17 @@ export default function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="kerdesek" className="hairline-b bg-lifted">
+    <section id="kerdesek" className="hairline-b">
       <div className="container-page grid gap-10 py-20 md:py-24 lg:grid-cols-[38fr_62fr] lg:gap-16">
         <Reveal>
           <p className="eyebrow">Kérdések</p>
-          <h2 className="mt-4 max-w-[16ch] text-[clamp(30px,4vw,44px)] font-bold leading-[1.08] tracking-[-0.04em] text-ink">
+          <h2 className="mt-4 max-w-[16ch] text-[clamp(30px,4vw,44px)] font-normal leading-[1.08] tracking-[-0.04em] text-ink">
             Amit a legtöbben megkérdeznek.
           </h2>
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="overflow-hidden rounded-large border border-hairline bg-canvas">
+          <div className="overflow-hidden rounded-large border border-hairline bg-surface">
             {ITEMS.map((item, i) => {
               const isOpen = open === i;
               return (

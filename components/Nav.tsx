@@ -61,7 +61,7 @@ export default function Nav() {
       initial={reduce ? false : { y: -56, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: EASE }}
-      className="sticky top-0 z-50 bg-lifted hairline-b"
+      className="sticky top-0 z-50 bg-canvas hairline-b"
     >
       <div className="container-page flex h-[54px] items-center justify-between">
         <a href="#" className="flex items-baseline gap-1.5 text-[15px] font-semibold tracking-[-0.02em] text-ink">
@@ -109,7 +109,7 @@ export default function Nav() {
           initial={reduce ? false : { opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="hairline-t bg-lifted md:hidden"
+          className="hairline-t bg-canvas md:hidden"
           aria-label="Mobil navigáció"
         >
           <div className="container-page flex flex-col gap-1 py-4">

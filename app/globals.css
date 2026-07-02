@@ -18,8 +18,10 @@
 
   /* Themed surface aliases — consumed as bg-canvas, text-ink, etc. */
   --color-canvas: var(--bn-canvas);
+  --color-surface: var(--bn-surface);
   --color-lifted: var(--bn-lifted);
   --color-inset: var(--bn-inset);
+  --color-frame: var(--bn-frame);
   --color-ink: var(--bn-ink);
   --color-ink-2: var(--bn-ink-2);
   --color-ink-3: var(--bn-ink-3);
@@ -86,13 +88,16 @@
    Light: Chronicle marketing canvas (pure white / fog / pale stone)
    Dark:  Chronicle app chrome (near-black / graphite lift)             */
 :root {
-  --bn-canvas: #ffffff;
+  /* Chronicle élő oldal: a teljes canvas fog (#f3f3f3), a kártyák fehérek */
+  --bn-canvas: #f3f3f3;
+  --bn-surface: #ffffff;
   --bn-lifted: #f3f3f3;
   --bn-inset: #e1e1e1;
-  --bn-ink: #000000;
+  --bn-ink: #050505;
   --bn-ink-2: #3a3a3a;
-  --bn-ink-3: #666666;
+  --bn-ink-3: rgba(0, 0, 0, 0.56);
   --bn-hairline: #e2e2e2;
+  --bn-frame: rgba(0, 0, 0, 0.14);
   --bn-accent: #0052cc;
   --bn-cta: #000000;
   --bn-cta-ink: #ffffff;
@@ -101,12 +106,14 @@
 
 .dark {
   --bn-canvas: #0a0a0a;
+  --bn-surface: #151517;
   --bn-lifted: #141414;
-  --bn-inset: #1d1d1f;
+  --bn-inset: #1e1e20;
   --bn-ink: #f5f5f5;
   --bn-ink-2: #c9c9c9;
-  --bn-ink-3: #8a8a8a;
+  --bn-ink-3: rgba(255, 255, 255, 0.55);
   --bn-hairline: #242426;
+  --bn-frame: rgba(255, 255, 255, 0.1);
   --bn-accent: #4d8dff;
   --bn-cta: #f5f5f5;
   --bn-cta-ink: #0a0a0a;

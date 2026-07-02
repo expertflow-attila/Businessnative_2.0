@@ -1,4 +1,5 @@
 import Nav from "@/components/Nav";
+import PageFrame from "@/components/PageFrame";
 import Hero from "@/components/Hero";
 import ToolsBand from "@/components/ToolsBand";
 import Workflow from "@/components/Workflow";
@@ -13,17 +14,20 @@ export default function Home() {
   return (
     <>
       <Nav />
-      <main>
-        <Hero />
-        <ToolsBand />
-        <Workflow />
-        <Features />
-        <Compare />
-        <UseCases />
-        <Faq />
-        <Cta />
-      </main>
-      <Footer />
+      <div className="relative">
+        <PageFrame />
+        <main className="relative">
+          <Hero />
+          <ToolsBand />
+          <Workflow />
+          <Features />
+          <Compare />
+          <UseCases />
+          <Faq />
+          <Cta />
+        </main>
+        <Footer />
+      </div>
     </>
   );
 }

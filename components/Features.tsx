@@ -49,7 +49,7 @@ export default function Features() {
       <div className="container-page py-20 md:py-24">
         <Reveal>
           <p className="eyebrow">A rendszer</p>
-          <h2 className="mt-4 max-w-[24ch] text-[clamp(30px,4vw,44px)] font-bold leading-[1.08] tracking-[-0.04em] text-ink">
+          <h2 className="mt-4 max-w-[24ch] text-[clamp(30px,4vw,44px)] font-normal leading-[1.08] tracking-[-0.04em] text-ink">
             Komoly munkára építve.
           </h2>
           <p className="mt-4 max-w-[52ch] text-body-lg text-ink-3">
@@ -60,7 +60,7 @@ export default function Features() {
 
         <Stagger className="mt-12 grid gap-px overflow-hidden rounded-large border border-hairline bg-hairline md:grid-cols-2">
           {MAIN.map((f) => (
-            <StaggerItem key={f.title} className="bg-lifted p-7 sm:p-9">
+            <StaggerItem key={f.title} className="bg-surface p-7 sm:p-9">
               <span className="text-ink" aria-hidden>
                 {f.icon}
               </span>
@@ -72,7 +72,7 @@ export default function Features() {
 
         <Stagger className="mt-px grid gap-px overflow-hidden rounded-large border border-hairline bg-hairline sm:grid-cols-2 lg:grid-cols-4" stagger={0.06}>
           {SMALL.map((f) => (
-            <StaggerItem key={f.title} className="bg-canvas p-6">
+            <StaggerItem key={f.title} className="bg-surface p-6">
               <h3 className="text-body-lg font-medium text-ink">{f.title}</h3>
               <p className="mt-2.5 text-body text-ink-3">{f.body}</p>
             </StaggerItem>

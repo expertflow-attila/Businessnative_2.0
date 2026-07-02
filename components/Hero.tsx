@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "motion/react";
 import Console from "@/components/Console";
+import { PlusMark } from "@/components/PageFrame";
 import { EASE, Magnetic } from "@/components/motion/primitives";
 
 const H1_LINES = ["Amikor a", "teljesítmény", "magától jön."];
@@ -10,7 +11,15 @@ export default function Hero() {
   const reduce = useReducedMotion();
 
   return (
-    <section className="hairline-b">
+    <section className="hairline-b relative">
+      {/* jelölő keresztek a szerkezeti vonalak metszéspontjain */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-10 mx-auto hidden w-full max-w-[1280px] lg:block"
+      >
+        <PlusMark className="absolute -bottom-[5.5px] -left-[5.5px]" />
+        <PlusMark className="absolute -bottom-[5.5px] -right-[5.5px]" />
+      </div>
       <div className="container-page grid items-center gap-12 py-16 md:py-20 lg:grid-cols-[42fr_58fr] lg:gap-16 lg:py-24">
         {/* Bal: tézis */}
         <div className="min-w-0">
@@ -23,7 +32,7 @@ export default function Hero() {
             MI-ügynökök · valós folyamatokra
           </motion.p>
 
-          <h1 className="mt-5 text-[clamp(38px,4.8vw,64px)] font-bold leading-[1.02] tracking-[-0.04em] text-ink">
+          <h1 className="mt-5 text-[clamp(36px,4.6vw,60px)] font-normal leading-[1.04] tracking-[-0.03em] text-ink">
             {H1_LINES.map((line, i) => (
               <span key={line} className="block overflow-hidden">
                 <motion.span

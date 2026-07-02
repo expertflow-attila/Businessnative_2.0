@@ -60,11 +60,11 @@ export default function Compare() {
   };
 
   return (
-    <section className="hairline-b bg-lifted">
+    <section className="hairline-b">
       <div className="container-page py-20 md:py-24">
         <Reveal className="text-center">
           <p className="eyebrow">Miért éri meg</p>
-          <h2 className="mx-auto mt-4 max-w-[20ch] text-[clamp(30px,4vw,44px)] font-bold leading-[1.08] tracking-[-0.04em] text-ink">
+          <h2 className="mx-auto mt-4 max-w-[20ch] text-[clamp(30px,4vw,44px)] font-normal leading-[1.08] tracking-[-0.04em] text-ink">
             A működésed a névjegyed.
           </h2>
           <p className="mx-auto mt-4 max-w-[52ch] text-body-lg text-ink-3">
@@ -82,7 +82,7 @@ export default function Compare() {
               </span>
               <RowList rows={MANUAL} accent={false} />
             </div>
-            <div className="bg-canvas p-6">
+            <div className="bg-surface p-6">
               <span className="font-mono text-[10px] font-medium tracking-[0.08em] text-accent">
                 BUSINESS NATIVE MŰKÖDÉS
               </span>
@@ -94,7 +94,7 @@ export default function Compare() {
         <Reveal delay={0.15} className="hidden md:block">
           <div
             ref={ref}
-            className="relative mt-12 select-none overflow-hidden rounded-large border border-hairline bg-canvas shadow-hero-slider"
+            className="relative mt-12 select-none overflow-hidden rounded-large border border-hairline bg-surface shadow-hero-slider"
             onPointerDown={(e) => {
               dragging.current = true;
               (e.target as HTMLElement).setPointerCapture?.(e.pointerId);

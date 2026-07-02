@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-lifted">
+    <footer>
       <div className="container-page flex flex-col gap-6 py-10 md:flex-row md:items-center md:justify-between">
         <div>
           <span className="flex items-baseline gap-1.5 text-[15px] font-semibold tracking-[-0.02em] text-ink">
