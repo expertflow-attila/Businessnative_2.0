@@ -15,12 +15,14 @@ const REFERENCIAK = [
     title: "Felvétel, keverés, mastering, filmes hangmunka",
     name: "Vitányi Dávid · Modus Recording",
     img: "/images/ref-modus.webp",
+    href: "/referenciak/modus-recording",
   },
   {
     tag: "Tanácsadó",
     title: "Kiberbiztonsági irányítás és digitális ellenállóképesség",
     name: "Dr. Nagyfejő Éva",
     img: "/images/ref-eva.webp",
+    href: "/referenciak/eva-nagyfejeo",
   },
 ];
 
@@ -47,25 +49,46 @@ export default function ReferenciakPage() {
         <div className="container-page py-16 md:py-20">
           <Stagger className="grid gap-px overflow-hidden rounded-large border border-hairline bg-hairline md:grid-cols-2">
             {REFERENCIAK.map((r) => (
-              <StaggerItem key={r.name} className="flex flex-col bg-surface">
-                <div className="relative aspect-[16/10] overflow-hidden border-b border-hairline bg-inset">
-                  <Image
-                    src={r.img}
-                    alt={r.name}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover object-top transition-transform duration-500 ease-out hover:scale-[1.02]"
-                  />
-                </div>
-                <div className="flex flex-1 flex-col p-6 sm:p-8">
-                  <span className="font-mono text-[10px] font-medium tracking-[0.08em] text-accent">
-                    {r.tag.toUpperCase()}
-                  </span>
-                  <h2 className="mt-3 text-heading font-normal tracking-[-0.02em] text-ink">
-                    {r.title}
-                  </h2>
-                  <p className="mt-3 text-body text-ink-3">{r.name}</p>
-                </div>
+              <StaggerItem key={r.name} className="bg-surface">
+                <a href={r.href} className="group flex h-full flex-col">
+                  <div className="relative aspect-[16/10] overflow-hidden border-b border-hairline bg-inset">
+                    <Image
+                      src={r.img}
+                      alt={r.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col p-6 sm:p-8">
+                    <span className="font-mono text-[10px] font-medium tracking-[0.08em] text-accent">
+                      {r.tag.toUpperCase()}
+                    </span>
+                    <h2 className="mt-3 text-heading font-normal tracking-[-0.02em] text-ink">
+                      {r.title}
+                    </h2>
+                    <p className="mt-3 text-body text-ink-3">{r.name}</p>
+                    <span className="mt-5 inline-flex items-center gap-2 text-body font-medium text-ink">
+                      További részletek
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 13 13"
+                        fill="none"
+                        aria-hidden
+                        className="transition-transform duration-300 ease-out group-hover:translate-x-1"
+                      >
+                        <path
+                          d="M2 6.5h9M7.5 3l3.5 3.5L7.5 10"
+                          stroke="currentColor"
+                          strokeWidth="1.3"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                </a>
               </StaggerItem>
             ))}
           </Stagger>

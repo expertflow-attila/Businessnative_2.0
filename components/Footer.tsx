@@ -30,6 +30,21 @@ export default function Footer() {
           <span>© {new Date().getFullYear()} Business Native · Nagy Attila</span>
         </div>
       </div>
+      <div className="hairline-t">
+        <div className="container-page flex flex-wrap items-center gap-x-5 gap-y-2 py-4 text-body-sm text-ink-3">
+          <a href="/adatvedelem" className="transition-colors duration-200 hover:text-ink">
+            Adatvédelem
+          </a>
+          <span aria-hidden>·</span>
+          <a href="/aszf" className="transition-colors duration-200 hover:text-ink">
+            ÁSZF
+          </a>
+          <span aria-hidden>·</span>
+          <a href="/garancia" className="transition-colors duration-200 hover:text-ink">
+            Garancia
+          </a>
+        </div>
+      </div>
     </footer>
   );
 }

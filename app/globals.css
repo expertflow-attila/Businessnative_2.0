@@ -224,6 +224,53 @@
   }
 }
 
+/* Jogi/hosszú szöveges oldalak tipográfiája ----------------------------- */
+.prose-legal h1 {
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--bn-ink);
+}
+.prose-legal h2,
+.prose-legal h3 {
+  margin-top: 2.2em;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--bn-ink);
+}
+.prose-legal p {
+  margin-top: 1em;
+  max-width: 68ch;
+  font-size: 14px;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+  color: var(--bn-ink-3);
+}
+.prose-legal strong {
+  font-weight: 500;
+  color: var(--bn-ink-2);
+}
+.prose-legal ul,
+.prose-legal ol {
+  margin-top: 1em;
+  padding-left: 1.2em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  max-width: 68ch;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--bn-ink-3);
+  list-style: disc;
+}
+.prose-legal a {
+  color: var(--bn-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* Lágy függőleges csíkozás (Chronicle footer-minta) -------------------- */
 .pinstripes {
   position: relative;
