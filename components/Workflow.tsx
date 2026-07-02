@@ -8,57 +8,57 @@ const STEP_MS = 5200;
 
 const STEPS = [
   {
-    key: "felmeres",
-    title: "Felmérés",
-    body: "Végigmegyünk a napi működéseden, és megkeressük, hol folyik el az idő. Nem eszközt adok el — a folyamataidból indulok ki.",
+    key: "jelentkezes",
+    title: "Jelentkezés",
+    body: "Konzultáció során részletesen átbeszéljük az igényeidet és a céljaidat — a folyamataidból indulok ki, nem eszközt adok el.",
     panel: {
-      label: "FOLYAMAT-TÉRKÉP",
+      label: "KONZULTÁCIÓ — 30 PERC",
       rows: [
-        { name: "Email + megkeresések kezelése", value: "heti 6,5 óra", hot: true },
-        { name: "Ajánlatok és utánkövetés", value: "heti 4 óra", hot: true },
-        { name: "Adminisztráció, számlázás", value: "heti 3 óra", hot: false },
-        { name: "Riportok, kimutatások", value: "heti 2 óra", hot: false },
+        { name: "Jelenlegi működésed feltérképezése", value: "közösen", hot: true },
+        { name: "Hol folyik el a legtöbb időd", value: "közösen", hot: true },
+        { name: "Célok és prioritások", value: "közösen", hot: false },
+        { name: "Első irányjavaslat", value: "tőlem", hot: false },
       ],
     },
   },
   {
-    key: "terv",
-    title: "Rendszerterv",
-    body: "Megtervezem, mit érdemes ügynökre bízni és mit nem. Írásos tervet kapsz: lépések, felelősök, mérhető célok.",
+    key: "tervezes",
+    title: "Tervezés",
+    body: "Megtervezem a weboldalad, a funneled és a hozzájuk kapcsolódó AI-workflow-kat. Írásos tervet kapsz: lépések, ütemezés, mérhető célok.",
     panel: {
       label: "RENDSZERTERV — RÉSZLET",
       rows: [
-        { name: "Lead-minősítő ügynök", value: "1. hét", hot: true },
-        { name: "Email-triage + válasz-vázlatok", value: "2. hét", hot: true },
-        { name: "CRM-szinkron és utánkövetés", value: "3. hét", hot: false },
-        { name: "Heti riport automatikusan", value: "4. hét", hot: false },
+        { name: "Weboldal- és funnel-vázlat", value: "1. hét", hot: true },
+        { name: "AI-workflow térkép", value: "1. hét", hot: true },
+        { name: "Eszközök kiválasztása", value: "2. hét", hot: false },
+        { name: "Írásos terv és ütemezés", value: "2. hét", hot: false },
       ],
     },
   },
   {
-    key: "epites",
-    title: "Ügynök-építés",
-    body: "Megépítem és élesben tesztelem az ügynököket a saját eszközeiddel — email, naptár, CRM, számlázó. Te közben a munkádat végzed.",
+    key: "megvalositas",
+    title: "Megvalósítás",
+    body: "Felépítem a teljes alrendszered, majd integrálom és tréningezem az AI-t a saját eszközeiddel. Te közben a munkádat végzed.",
     panel: {
       label: "ÉLES TESZT — NAPLÓ",
       rows: [
-        { name: "Lead-ügynök: 28 megkeresés feldolgozva", value: "kész", hot: true },
-        { name: "Inbox-ügynök: 96% pontos kategorizálás", value: "kész", hot: true },
-        { name: "Naptár-ügynök: ütközések feloldva", value: "fut", hot: false },
-        { name: "Riport-ügynök: első kimutatás kiment", value: "fut", hot: false },
+        { name: "Lead-asszisztens: 28 megkeresés feldolgozva", value: "kész", hot: true },
+        { name: "Inbox-triage: 96% pontos kategorizálás", value: "kész", hot: true },
+        { name: "Naptár-szinkron: ütközések feloldva", value: "fut", hot: false },
+        { name: "Riport: első kimutatás kiment", value: "fut", hot: false },
       ],
     },
   },
   {
-    key: "atadas",
-    title: "Átadás és mérés",
-    body: "Átadom a rendszert, betanítalak, és mérjük az eredményt. Minden lépés követhető — látod, mit végzett el helyetted a rendszer.",
+    key: "tamogatas",
+    title: "Támogatás",
+    body: "Teljes körű partneri támogatás, folyamatos fejlesztés és havi optimalizálás. Minden lépés követhető — látod, mit végzett el helyetted a rendszer.",
     panel: {
       label: "HAVI KIMUTATÁS",
       rows: [
         { name: "Automatikusan elvégzett feladat", value: "412 db", hot: true },
         { name: "Visszanyert munkaidő", value: "34 óra", hot: true },
-        { name: "Átlagos reakcióidő új leadre", value: "3 perc", hot: false },
+        { name: "Átlagos reakcióidő új érdeklődőre", value: "3 perc", hot: false },
         { name: "Elveszett vagy elfelejtett feladat", value: "0 db", hot: false },
       ],
     },
@@ -88,9 +88,9 @@ export default function Workflow() {
     >
       <div className="container-page py-20 md:py-24">
         <Reveal>
-          <p className="eyebrow">Így dolgozom</p>
+          <p className="eyebrow">Folyamat</p>
           <h2 className="mt-4 max-w-[22ch] text-[clamp(30px,4vw,44px)] font-normal leading-[1.08] tracking-[-0.04em] text-ink">
-            Négy lépés a kézi munkától a működő rendszerig.
+            Az együttműködés lépései.
           </h2>
         </Reveal>
 

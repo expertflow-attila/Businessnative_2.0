@@ -46,11 +46,12 @@ function ThemeToggle() {
 }
 
 const LINKS = [
-  { href: "#folyamat", label: "Folyamat" },
-  { href: "#rendszer", label: "Rendszer" },
-  { href: "#esetek", label: "Használat" },
-  { href: "#kerdesek", label: "Kérdések" },
+  { href: "/szolgaltatas", label: "Szolgáltatás" },
+  { href: "/rolam", label: "Rólam" },
+  { href: "/referenciak", label: "Referenciák" },
 ];
+
+const TRAINING_URL = "https://expertflow-website-v4.vercel.app/kerdoiv";
 
 export default function Nav() {
   const reduce = useReducedMotion();
@@ -82,6 +83,14 @@ export default function Nav() {
         </nav>
 
         <div className="flex items-center gap-3">
+          <a
+            href={TRAINING_URL}
+            target="_blank"
+            rel="noopener"
+            className="hidden text-body font-medium text-ink/45 transition-colors duration-200 hover:text-ink md:block"
+          >
+            Tréningek
+          </a>
           <ThemeToggle />
           <a href="#kapcsolat" className="btn-primary btn-sm hidden sm:inline-flex">
             Beszéljünk
@@ -123,6 +132,15 @@ export default function Nav() {
                 {l.label}
               </a>
             ))}
+            <a
+              href={TRAINING_URL}
+              target="_blank"
+              rel="noopener"
+              onClick={() => setOpen(false)}
+              className="rounded-base px-2 py-2.5 text-body-lg font-medium text-ink/70 hover:bg-inset/40 hover:text-ink"
+            >
+              Tréningek
+            </a>
             <a href="#kapcsolat" onClick={() => setOpen(false)} className="btn-primary mt-3">
               Beszéljünk
             </a>

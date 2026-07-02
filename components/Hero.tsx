@@ -5,7 +5,7 @@ import HeroShowcase from "@/components/HeroShowcase";
 import { PlusMark } from "@/components/PageFrame";
 import { EASE, Magnetic } from "@/components/motion/primitives";
 
-const H1_LINES = ["Amikor a", "teljesítmény", "magától jön."];
+const H1_LINES = ["AI-alapú rendszerek", "egyéni", "vállalkozóknak."];
 
 export default function Hero() {
   const reduce = useReducedMotion();
@@ -53,9 +53,8 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: EASE, delay: 0.45 }}
             className="mt-6 max-w-[46ch] text-body-lg text-ink-3"
           >
-            Olyan rendszereket építek, ahol MI-ügynökök végzik az ismétlődő
-            munkát — kevesebb kézi lépés, gyorsabb átfutás, és több időd arra,
-            ami igazán számít.
+            Szolgáltatási rendszert hozok létre a vállalkozásod köré, amely
+            láthatóvá és értékesíthetővé teszi a szakmai tudásodat.
           </motion.p>
 
           <motion.div
@@ -69,7 +68,7 @@ export default function Hero() {
                 Konzultációt foglalok
               </a>
             </Magnetic>
-            <a href="#folyamat" className="btn-ghost group">
+            <a href="/szolgaltatas" className="btn-ghost group">
               Így dolgozom
               <svg
                 width="13"

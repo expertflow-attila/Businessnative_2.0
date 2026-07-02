@@ -4,7 +4,9 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useState } from "react";
 import { EASE, Reveal } from "@/components/motion/primitives";
 
-const ITEMS = [
+export type FaqItem = { q: string; a: string };
+
+const ITEMS: FaqItem[] = [
   {
     q: "Milyen vállalkozásoknak való ez?",
     a: "Szakértő szolgáltatóknak és kis csapatoknak, ahol az ismétlődő adminisztráció — email, ajánlatok, utánkövetés, riportok — értékes órákat visz el. Ha a heti működésed nagy része kézi lépésekből áll, van mit automatizálni.",
@@ -27,7 +29,15 @@ const ITEMS = [
   },
 ];
 
-export default function Faq() {
+export default function Faq({
+  eyebrow = "Kérdések",
+  title = "Amit a legtöbben megkérdeznek.",
+  items = ITEMS,
+}: {
+  eyebrow?: string;
+  title?: string;
+  items?: FaqItem[];
+}) {
   const reduce = useReducedMotion();
   const [open, setOpen] = useState<number | null>(0);
 
@@ -35,15 +45,15 @@ export default function Faq() {
     <section id="kerdesek" className="hairline-b">
       <div className="container-page grid gap-10 py-20 md:py-24 lg:grid-cols-[38fr_62fr] lg:gap-16">
         <Reveal>
-          <p className="eyebrow">Kérdések</p>
-          <h2 className="mt-4 max-w-[16ch] text-[clamp(30px,4vw,44px)] font-normal leading-[1.08] tracking-[-0.04em] text-ink">
-            Amit a legtöbben megkérdeznek.
+          <p className="eyebrow">{eyebrow}</p>
+          <h2 className="mt-4 max-w-[18ch] text-[clamp(30px,4vw,44px)] font-normal leading-[1.08] tracking-[-0.04em] text-ink">
+            {title}
           </h2>
         </Reveal>
 
         <Reveal delay={0.1}>
           <div className="overflow-hidden rounded-large border border-hairline bg-surface">
-            {ITEMS.map((item, i) => {
+            {items.map((item, i) => {
               const isOpen = open === i;
               return (
                 <div key={item.q} className="border-b border-hairline last:border-b-0">

@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
+import PageFrame from "@/components/PageFrame";
 import "./globals.css";
 
 const geist = Geist({
@@ -34,7 +37,12 @@ export default function RootLayout({
     <html lang="hu" suppressHydrationWarning>
       <body className={`${geist.variable} ${geistMono.variable}`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
-          {children}
+          <Nav />
+          <div className="relative">
+            <PageFrame />
+            <main className="relative">{children}</main>
+            <Footer />
+          </div>
         </ThemeProvider>
       </body>
     </html>

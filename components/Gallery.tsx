@@ -8,70 +8,70 @@ import { Reveal } from "@/components/motion/primitives";
 
 const AREAS = [
   {
-    key: "ugyfelszolgalat",
-    title: "Ügyfélszolgálat",
-    body: "Megkeresések fogadása, kategorizálása és megválaszolása — éjjel is.",
+    key: "kampanyok",
+    title: "Kampányok támogatása",
+    body: "Az AI-csapatod támogatja a kommunikációt, a követést és a kiértékelést, így minden átlátható és mérhető marad.",
     rows: [
       { w: "72%", hot: true },
       { w: "58%", hot: false },
       { w: "84%", hot: false },
     ],
-    stat: "24/7",
+    stat: "mérhető",
   },
   {
-    key: "ertekesites",
-    title: "Értékesítés",
-    body: "Lead-minősítés, azonnali válasz és időpont-foglalás, mielőtt kihűlne az érdeklődő.",
+    key: "dontesek",
+    title: "Adatvezérelt döntések",
+    body: "A vállalkozásod tudásbázisa mutatja, hol veszíted el az érdeklődőket, és mire van szükségük az ügyfeleidnek.",
     rows: [
       { w: "64%", hot: true },
       { w: "80%", hot: true },
       { w: "46%", hot: false },
     ],
-    stat: "3 perc",
+    stat: "insight",
   },
   {
-    key: "operacio",
-    title: "Operáció",
-    body: "Feladatok priorizálása, függőségek követése, semmi nem vész el a háttérben.",
+    key: "asszisztens",
+    title: "Személyi asszisztens",
+    body: "AI-ügynököd koordinálja a vállalkozásod fő területeire fókuszáló csapattagokat, és a kérésednek megfelelően irányítja őket.",
     rows: [
       { w: "76%", hot: false },
       { w: "52%", hot: true },
       { w: "68%", hot: false },
     ],
-    stat: "0 elveszett",
+    stat: "koordinál",
   },
   {
-    key: "adminisztracio",
-    title: "Adminisztráció",
-    body: "Számlázási emlékeztetők, dokumentumok előkészítése, CRM napra készen.",
+    key: "szamlazas",
+    title: "Számlázás és pénzügyi követés",
+    body: "A számlák automatikusan kimennek, a befizetések követhetők, és hónap végén nem kell órákat töltened az összesítéssel.",
     rows: [
       { w: "58%", hot: false },
       { w: "72%", hot: false },
       { w: "40%", hot: true },
     ],
-    stat: "heti 6 óra",
+    stat: "auto",
   },
   {
-    key: "riporting",
-    title: "Riporting",
-    body: "Heti és havi kimutatások automatikusan, számokra épülő döntésekhez.",
+    key: "eloszures",
+    title: "Előszűrés és kvalifikáció",
+    body: "Az asszisztens kiszűri, kinek tudsz tényleg segíteni — így a konzultációra már felkészült, kvalifikált érdeklődők érkeznek.",
     rows: [
       { w: "66%", hot: true },
       { w: "78%", hot: false },
       { w: "54%", hot: false },
     ],
-    stat: "magától",
+    stat: "kvalifikált",
   },
   {
-    key: "utankovetes",
-    title: "Utánkövetés",
-    body: "Ajánlatok és beszélgetések ütemezett follow-upja — egyetlen szál sem szakad el.",
+    key: "tudasbazis",
+    title: "Ügyfél-tudásbázis",
+    body: "Minden ügyfeled a saját fiókjában fér hozzá a videókhoz, dokumentumokhoz és felvételekhez, AI-alapú kereséssel.",
     rows: [
       { w: "70%", hot: false },
       { w: "48%", hot: true },
       { w: "82%", hot: false },
     ],
-    stat: "100% lefedve",
+    stat: "24/7",
   },
 ];
 
@@ -132,9 +132,9 @@ export default function Gallery() {
       <div className="container-page pt-20 md:pt-24">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <Reveal>
-            <p className="eyebrow">Területek</p>
+            <p className="eyebrow">Megoldások</p>
             <h2 className="mt-4 max-w-[22ch] text-[clamp(30px,4vw,44px)] font-normal leading-[1.08] tracking-[-0.03em] text-ink">
-              Hol dolgozik helyetted a rendszer?
+              Megvalósítás a gyakorlatban.
             </h2>
           </Reveal>
           <Reveal delay={0.1} className="flex gap-2 pb-1">
