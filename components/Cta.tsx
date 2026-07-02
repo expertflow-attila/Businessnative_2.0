@@ -2,7 +2,7 @@ import { Magnetic, Reveal } from "@/components/motion/primitives";
 
 export default function Cta() {
   return (
-    <section id="kapcsolat" className="hairline-b">
+    <section id="kapcsolat" className="hairline-b pinstripes">
       <div className="container-page py-24 text-center md:py-32">
         <Reveal>
           <p className="eyebrow">Kezdjük el</p>

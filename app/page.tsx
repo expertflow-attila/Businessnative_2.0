@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import ToolsBand from "@/components/ToolsBand";
 import Workflow from "@/components/Workflow";
 import Features from "@/components/Features";
+import Gallery from "@/components/Gallery";
 import Compare from "@/components/Compare";
 import UseCases from "@/components/UseCases";
 import Faq from "@/components/Faq";
@@ -21,6 +22,7 @@ export default function Home() {
           <ToolsBand />
           <Workflow />
           <Features />
+          <Gallery />
           <Compare />
           <UseCases />
           <Faq />

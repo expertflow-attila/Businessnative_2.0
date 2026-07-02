@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import { EASE } from "@/components/motion/primitives";
 
 /* Élő műveleti konzol — a hero termék-ablaka.
-   A konzol mindkét témában sötét app-felület (termék-screenshot logika),
-   a Signal Blue kizárólag itt, a termékben él. */
+   Világos app-felület (Chronicle-logika: fehér ablak pale-stone keretben),
+   dark módban a tokenekkel együtt vált. A Signal Blue csak itt él. */
 
 type Task = {
   id: number;
@@ -59,26 +59,26 @@ export default function Console() {
 
   return (
     <div className="rounded-large border border-hairline bg-inset p-3 shadow-hero-slider sm:p-4">
-      <div className="overflow-hidden rounded-medium bg-[#0d0d0e] text-[#e8e8e8] shadow-deep-card">
+      <div className="overflow-hidden rounded-medium bg-surface shadow-card-lift">
         {/* Ablak-fejléc */}
-        <div className="flex items-center justify-between border-b border-white/8 px-4 py-3">
+        <div className="flex items-center justify-between border-b border-hairline px-4 py-3">
           <div className="flex items-center gap-2.5">
-            <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-[#4ade80]" aria-hidden />
-            <span className="font-mono text-[10px] font-medium tracking-[0.08em] text-white/60">
+            <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-[#16a34a] dark:bg-[#4ade80]" aria-hidden />
+            <span className="font-mono text-[10px] font-medium tracking-[0.08em] text-ink-3">
               MŰVELETI KONZOL — ÉLŐ
             </span>
           </div>
-          <span className="font-mono text-[10px] text-white/35">business native os</span>
+          <span className="font-mono text-[10px] text-ink-3/60">business native os</span>
         </div>
 
         {/* Pipeline számlálók */}
-        <div className="grid grid-cols-2 gap-px border-b border-white/8 bg-white/8 sm:grid-cols-4">
+        <div className="grid grid-cols-2 gap-px border-b border-hairline bg-hairline sm:grid-cols-4">
           {STAGES.map((s, i) => (
-            <div key={s.label} className="bg-[#0d0d0e] px-3 py-3 sm:px-4">
-              <div className="font-mono text-[9px] tracking-[0.08em] text-white/40">{s.label}</div>
-              <div className="mt-1 font-mono text-[15px] font-medium text-white sm:text-[17px]">
+            <div key={s.label} className="bg-surface px-3 py-3 sm:px-4">
+              <div className="font-mono text-[9px] tracking-[0.08em] text-ink-3">{s.label}</div>
+              <div className="mt-1 font-mono text-[15px] font-medium text-ink sm:text-[17px]">
                 {s.base + ((tick + i) % 4)}
-                <span className="ml-1 text-[9px] text-[#4d8dff]">/nap</span>
+                <span className="ml-1 text-[9px] text-accent">/nap</span>
               </div>
             </div>
           ))}
@@ -95,19 +95,19 @@ export default function Console() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={reduce ? undefined : { opacity: 0, y: 8 }}
                 transition={{ duration: 0.45, ease: EASE }}
-                className="flex items-center gap-3 rounded-base bg-white/[0.04] px-3 py-2.5"
+                className="flex items-center gap-3 rounded-base bg-canvas px-3 py-2.5"
               >
-                <span className="w-14 shrink-0 font-mono text-[9px] font-medium tracking-[0.06em] text-[#4d8dff]">
+                <span className="w-14 shrink-0 font-mono text-[9px] font-medium tracking-[0.06em] text-accent">
                   {t.agent}
                 </span>
-                <span className="min-w-0 flex-1 truncate text-[12px] leading-snug text-white/75">
+                <span className="min-w-0 flex-1 truncate text-[12px] leading-snug text-ink-2">
                   {t.text}
                 </span>
                 <span
                   className={`shrink-0 rounded-small px-1.5 py-0.5 font-mono text-[8px] font-medium tracking-[0.06em] ${
                     t.status === "FUT"
                       ? "bg-[#0052cc] text-white"
-                      : "bg-white/8 text-white/50"
+                      : "bg-inset text-ink-3"
                   }`}
                 >
                   {t.status}
@@ -118,12 +118,12 @@ export default function Console() {
         </div>
 
         {/* Kihasználtság sáv-diagram */}
-        <div className="border-t border-white/8 px-4 pb-4 pt-3">
+        <div className="border-t border-hairline px-4 pb-4 pt-3">
           <div className="mb-2 flex items-center justify-between">
-            <span className="font-mono text-[9px] tracking-[0.08em] text-white/40">
+            <span className="font-mono text-[9px] tracking-[0.08em] text-ink-3">
               ELVÉGZETT FELADATOK / 7 NAP
             </span>
-            <span className="font-mono text-[9px] text-[#4d8dff]">+38% e héten</span>
+            <span className="font-mono text-[9px] text-accent">+38% e héten</span>
           </div>
           <div className="flex h-12 items-end gap-1">
             {BARS.map((h, i) => (
@@ -134,7 +134,7 @@ export default function Console() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, ease: EASE, delay: 0.4 + i * 0.05 }}
                 style={{ height: `${h}%`, transformOrigin: "bottom" }}
-                className={`flex-1 rounded-[2px] ${i >= BARS.length - 3 ? "bg-[#0052cc]" : "bg-white/22"}`}
+                className={`flex-1 rounded-[2px] ${i >= BARS.length - 3 ? "bg-[#0052cc] dark:bg-[#4d8dff]" : "bg-ink/12"}`}
               />
             ))}
           </div>
