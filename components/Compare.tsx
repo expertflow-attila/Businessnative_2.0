@@ -20,6 +20,33 @@ const NATIVE = [
   { t: "Heti kimutatás magától érkezik", d: "számokra épülő döntések" },
 ];
 
+function RowList({
+  rows,
+  accent,
+}: {
+  rows: { t: string; d: string }[];
+  accent: boolean;
+}) {
+  return (
+    <ul className="mt-6 flex flex-col gap-5">
+      {rows.map((r) => (
+        <li key={r.t} className="flex items-start gap-3">
+          <span
+            className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${accent ? "bg-accent" : "bg-ink-3/50"}`}
+            aria-hidden
+          />
+          <span>
+            <span className={`block text-body-lg font-medium ${accent ? "text-ink" : "text-ink-2"}`}>
+              {r.t}
+            </span>
+            <span className="mt-0.5 block text-body text-ink-3">{r.d}</span>
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export default function Compare() {
   const [pos, setPos] = useState(50);
   const ref = useRef<HTMLDivElement>(null);
@@ -46,7 +73,25 @@ export default function Compare() {
           </p>
         </Reveal>
 
-        <Reveal delay={0.15}>
+        {/* Mobil: két egymás alatti kártya (a csúszka csak md-től) */}
+        <Reveal delay={0.15} className="md:hidden">
+          <div className="mt-10 flex flex-col gap-px overflow-hidden rounded-large border border-hairline bg-hairline">
+            <div className="bg-inset p-6 dark:bg-[#26262a]">
+              <span className="font-mono text-[10px] font-medium tracking-[0.08em] text-ink-3">
+                KÉZI MŰKÖDÉS
+              </span>
+              <RowList rows={MANUAL} accent={false} />
+            </div>
+            <div className="bg-canvas p-6">
+              <span className="font-mono text-[10px] font-medium tracking-[0.08em] text-accent">
+                BUSINESS NATIVE MŰKÖDÉS
+              </span>
+              <RowList rows={NATIVE} accent />
+            </div>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.15} className="hidden md:block">
           <div
             ref={ref}
             className="relative mt-12 select-none overflow-hidden rounded-large border border-hairline bg-canvas shadow-hero-slider"
@@ -82,7 +127,7 @@ export default function Compare() {
 
               {/* Felső réteg: kézi működés — clip-elve */}
               <div
-                className="col-start-1 row-start-1 bg-inset p-6 sm:p-10"
+                className="col-start-1 row-start-1 bg-inset p-6 dark:bg-[#26262a] sm:p-10"
                 style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
                 aria-hidden
               >

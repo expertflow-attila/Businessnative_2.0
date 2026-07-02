@@ -105,21 +105,27 @@ export default function Workflow() {
                   role="tab"
                   aria-selected={isActive}
                   onClick={() => setActive(i)}
-                  className="group relative border-b border-hairline py-5 text-left last:border-b-0"
+                  className="group relative border-b border-hairline py-5 pl-5 text-left last:border-b-0"
                 >
-                  {/* progress-csík */}
-                  <span className="absolute inset-x-0 top-0 h-px overflow-hidden" aria-hidden>
-                    {isActive && !reduce && !paused && (
-                      <motion.span
-                        key={`${s.key}-progress-${active}`}
-                        className="block h-full bg-ink"
-                        initial={{ scaleX: 0 }}
-                        animate={{ scaleX: 1 }}
-                        transition={{ duration: STEP_MS / 1000, ease: "linear" }}
-                        style={{ transformOrigin: "left" }}
-                      />
-                    )}
-                  </span>
+                  {/* aktív lépés függőleges progress-sínje */}
+                  {isActive && (
+                    <span
+                      className="absolute bottom-4 left-0 top-4 w-[2px] rounded-full bg-hairline"
+                      aria-hidden
+                    >
+                      {!reduce && !paused ? (
+                        <motion.span
+                          key={`${s.key}-progress`}
+                          className="block w-full bg-ink"
+                          initial={{ height: "0%" }}
+                          animate={{ height: "100%" }}
+                          transition={{ duration: STEP_MS / 1000, ease: "linear" }}
+                        />
+                      ) : (
+                        <span className="block h-full w-full bg-ink" />
+                      )}
+                    </span>
+                  )}
                   <span className="flex items-baseline gap-4">
                     <span
                       className={`font-mono text-body-sm transition-colors duration-200 ${

@@ -118,6 +118,11 @@
     scroll-behavior: smooth;
   }
 
+  html,
+  body {
+    overflow-x: clip;
+  }
+
   body {
     background: var(--bn-canvas);
     color: var(--bn-ink);
@@ -226,6 +231,10 @@
 }
 .marquee:hover .marquee-track {
   animation-play-state: paused;
+}
+.marquee {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
 /* Console pulse dot ---------------------------------------------------- */

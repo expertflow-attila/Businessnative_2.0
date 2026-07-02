@@ -13,7 +13,7 @@ export default function Hero() {
     <section className="hairline-b">
       <div className="container-page grid items-center gap-12 py-16 md:py-20 lg:grid-cols-[42fr_58fr] lg:gap-16 lg:py-24">
         {/* Bal: tézis */}
-        <div>
+        <div className="min-w-0">
           <motion.p
             initial={reduce ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -93,6 +93,7 @@ export default function Hero() {
 
         {/* Jobb: élő műveleti konzol */}
         <motion.div
+          className="min-w-0"
           initial={reduce ? false : { opacity: 0, y: 32, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1.0, ease: EASE, delay: 0.35 }}

@@ -13,13 +13,16 @@ export default function Cta() {
             Egy 30 perces beszélgetésben végigmegyünk a folyamataidon.
             Konkrét tervvel távozol — kötelezettség nélkül.
           </p>
-          <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-            <Magnetic>
-              <a href="mailto:hello@expertflow.hu?subject=Business%20Native%20konzult%C3%A1ci%C3%B3" className="btn-primary">
+          <div className="mx-auto mt-9 flex w-full max-w-[320px] flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:items-center sm:justify-center">
+            <Magnetic className="w-full sm:w-auto">
+              <a
+                href="mailto:hello@expertflow.hu?subject=Business%20Native%20konzult%C3%A1ci%C3%B3"
+                className="btn-primary w-full sm:w-auto"
+              >
                 Konzultációt foglalok
               </a>
             </Magnetic>
-            <a href="mailto:hello@expertflow.hu" className="btn-ghost">
+            <a href="mailto:hello@expertflow.hu" className="btn-ghost w-full sm:w-auto">
               hello@expertflow.hu
             </a>
           </div>

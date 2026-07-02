@@ -72,9 +72,9 @@ export default function Console() {
         </div>
 
         {/* Pipeline számlálók */}
-        <div className="grid grid-cols-4 divide-x divide-white/8 border-b border-white/8">
+        <div className="grid grid-cols-2 gap-px border-b border-white/8 bg-white/8 sm:grid-cols-4">
           {STAGES.map((s, i) => (
-            <div key={s.label} className="px-3 py-3 sm:px-4">
+            <div key={s.label} className="bg-[#0d0d0e] px-3 py-3 sm:px-4">
               <div className="font-mono text-[9px] tracking-[0.08em] text-white/40">{s.label}</div>
               <div className="mt-1 font-mono text-[15px] font-medium text-white sm:text-[17px]">
                 {s.base + ((tick + i) % 4)}
@@ -134,7 +134,7 @@ export default function Console() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, ease: EASE, delay: 0.4 + i * 0.05 }}
                 style={{ height: `${h}%`, transformOrigin: "bottom" }}
-                className={`flex-1 rounded-[2px] ${i >= BARS.length - 3 ? "bg-[#0052cc]" : "bg-white/12"}`}
+                className={`flex-1 rounded-[2px] ${i >= BARS.length - 3 ? "bg-[#0052cc]" : "bg-white/22"}`}
               />
             ))}
           </div>
